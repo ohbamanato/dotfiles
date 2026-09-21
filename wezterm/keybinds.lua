@@ -58,9 +58,12 @@ return {
     },
     -- コマンドパレット表示
     { key = "p", mods = "SUPER", action = act.ActivateCommandPalette },
-    -- Tab移動
-    { key = "Tab", mods = "CTRL", action = act.ActivateTabRelative(1) },
-    { key = "Tab", mods = "SHIFT|CTRL", action = act.ActivateTabRelative(-1) },
+    -- Tab移動 leader + e / q
+    { key = "e", mods = "LEADER", action = act.ActivateTabRelative(1) },
+    { key = "q", mods = "LEADER", action = act.ActivateTabRelative(-1) },
+    -- Ctrl+Tab は herdr のタブ移動に渡す (CSI u 形式で送信)
+    { key = "Tab", mods = "CTRL", action = act.SendString("\x1b[9;5u") },
+    { key = "Tab", mods = "SHIFT|CTRL", action = act.SendString("\x1b[9;6u") },
     -- Tab入れ替え
     { key = "{", mods = "LEADER", action = act({ MoveTabRelative = -1 }) },
     -- Tab新規作成
@@ -111,6 +114,17 @@ return {
     { key = "7", mods = "SUPER", action = act.ActivateTab(6) },
     { key = "8", mods = "SUPER", action = act.ActivateTab(7) },
     { key = "9", mods = "SUPER", action = act.ActivateTab(-1) },
+
+    -- タブ切替 leader + 数字
+    { key = "1", mods = "LEADER", action = act.ActivateTab(0) },
+    { key = "2", mods = "LEADER", action = act.ActivateTab(1) },
+    { key = "3", mods = "LEADER", action = act.ActivateTab(2) },
+    { key = "4", mods = "LEADER", action = act.ActivateTab(3) },
+    { key = "5", mods = "LEADER", action = act.ActivateTab(4) },
+    { key = "6", mods = "LEADER", action = act.ActivateTab(5) },
+    { key = "7", mods = "LEADER", action = act.ActivateTab(6) },
+    { key = "8", mods = "LEADER", action = act.ActivateTab(7) },
+    { key = "9", mods = "LEADER", action = act.ActivateTab(-1) },
 
     -- コマンドパレット
     { key = "p", mods = "SHIFT|CTRL", action = act.ActivateCommandPalette },

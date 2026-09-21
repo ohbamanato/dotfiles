@@ -18,5 +18,7 @@ echo "==> Linking dotfiles..."
 link "$DOTFILES/nvim"              "$CONFIG/nvim"
 link "$DOTFILES/wezterm"           "$CONFIG/wezterm"
 link "$DOTFILES/starship/starship.toml" "$CONFIG/starship.toml"
+mkdir -p "$CONFIG/herdr"
+link "$DOTFILES/herdr/config.toml" "$CONFIG/herdr/config.toml"
 
 echo "==> Done."
