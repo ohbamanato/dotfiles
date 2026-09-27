@@ -25,6 +25,12 @@ map('i', '<C-j>', '<Down>', {})
 map('i', '<C-h>', '<Left>', {})
 map('i', '<C-l>', '<Right>', {})
 
+-- jump to line start/end (Emacs-style; overrides Ctrl+a increment in normal mode)
+map('n', '<C-a>', '^', { noremap = true })
+map('n', '<C-e>', '$', { noremap = true })
+map('i', '<C-a>', '<C-o>^', { noremap = true })
+map('i', '<C-e>', '<C-o>$', { noremap = true })
+
 -- show diagnostics
 map('n', '<Leader>d', ':lua vim.diagnostic.open_float()<CR>', { noremap = true })
 
