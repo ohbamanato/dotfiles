@@ -22,7 +22,7 @@ switch_ascii_input_source_in_prefix = false
 
 [keys]
 prefix = "ctrl+p"
-detach = "ctrl+o"
+detach = "prefix+o"
 
 # Panes
 split_vertical = "prefix+r"
