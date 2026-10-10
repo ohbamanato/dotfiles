@@ -11,7 +11,11 @@ auto_switch = false
 enabled = false
 
 [ui.toast]
-delivery = "terminal"
+delivery = "herdr"
+delay_seconds = 1
+
+[ui.toast.herdr]
+position = "top-right"
 
 [experimental]
 switch_ascii_input_source_in_prefix = false
