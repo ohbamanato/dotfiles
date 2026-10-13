@@ -21,4 +21,10 @@ link "$DOTFILES/starship/starship.toml" "$CONFIG/starship.toml"
 mkdir -p "$CONFIG/herdr"
 link "$DOTFILES/herdr/config.toml" "$CONFIG/herdr/config.toml"
 
+echo "==> Linking Claude Code skills..."
+mkdir -p "$HOME/.claude/skills"
+for skill in "$DOTFILES"/claude/skills/*/; do
+  link "${skill%/}" "$HOME/.claude/skills/$(basename "$skill")"
+done
+
 echo "==> Done."
