@@ -19,10 +19,19 @@ return {
           dotfiles = false,
           git_ignored = false,
         },
+        -- follow the current buffer (e.g. files opened via Telescope)
+        update_focused_file = {
+          enable = true,
+        },
       })
 
       -- Keymaps
-      vim.keymap.set("n", "<C-n>", ":NvimTreeToggle<CR>", { desc = "Toggle file explorer", silent = true })
+      vim.keymap.set(
+        "n",
+        "<C-n>",
+        ":NvimTreeFindFileToggle<CR>",
+        { desc = "Toggle file explorer at current file", silent = true }
+      )
       vim.keymap.set("n", "<leader>e", ":NvimTreeFocus<CR>", { desc = "Focus file explorer", silent = true })
     end,
   },
