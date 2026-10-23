@@ -38,6 +38,22 @@ map('n', '<Leader>d', ':lua vim.diagnostic.open_float()<CR>', { noremap = true }
 map('n', '<C-_>', 'gcc', { noremap = false })
 map('v', '<C-_>', 'gc', { noremap = false })
 
+-- copy current file path to clipboard
+local function copy_path(modifier, label)
+  return function()
+    local path = vim.fn.expand(modifier)
+    if path == "" then
+      vim.notify("No file in current buffer", vim.log.levels.WARN)
+      return
+    end
+    vim.fn.setreg("+", path)
+    vim.notify("Copied " .. label .. ": " .. path)
+  end
+end
+vim.keymap.set('n', '<Leader>yp', copy_path("%:.", "relative path"), { desc = "Copy relative file path" })
+vim.keymap.set('n', '<Leader>yP', copy_path("%:p", "absolute path"), { desc = "Copy absolute file path" })
+vim.keymap.set('n', '<Leader>yn', copy_path("%:t", "file name"), { desc = "Copy file name" })
+
 -- save with Ctrl+s
 map('n', '<C-s>', ':w<CR>', { noremap = true, silent = true })
 map('i', '<C-s>', '<Cmd>w<CR>', { noremap = true, silent = true })
